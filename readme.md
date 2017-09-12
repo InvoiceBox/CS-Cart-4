@@ -28,6 +28,6 @@
 1. Пройдите по вкладку "Уведомления по протоколу" -> выберите "Тип уведомления" "Оплата/HTTP/Post (HTTP POST запрос с данными оплаты в переменных)"
 1. В поле "URL уведомления" укажите:
 
-    `<домен_сайта>/index.php?dispatch=payment_notification.notify?payment=invoicebox`
+    `<домен_сайта>/index.php?dispatch=payment_notification.notify&payment=invoicebox`
 
 1. Сохраните изменения.
