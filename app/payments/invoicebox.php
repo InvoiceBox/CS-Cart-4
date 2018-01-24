@@ -92,7 +92,7 @@ if (defined('PAYMENT_NOTIFICATION')) {
 	} else {
 		$vat = '0';
 	}
-    
+	$kcup = ($order_info['total'] - $sh_cost) / $order_info['subtotal'];
     $notify_url = fn_url("payment_notification.notify?payment=invoicebox", AREA, 'current');
 	$return = fn_url("payment_notification.return?payment=invoicebox", AREA, 'current');
 	$returncancel = fn_url("payment_notification.cancel?payment=invoicebox", AREA, 'current');
@@ -125,7 +125,7 @@ if (defined('PAYMENT_NOTIFICATION')) {
 	if (!empty($order_info['products'])) {
         foreach ($order_info['products'] as $k => $v) {
             $it++;
-            $price = fn_format_price($v['price'] - (fn_external_discounts($v) / $v['amount']));
+            $price = fn_format_price($v['price']* $v['amount'])* $kcup / $v['amount'];
 			$form_data["itransfer_item{$it}_name"] = $v['product'];
             $form_data["itransfer_item{$it}_quantity"] = $v['amount'];
             $form_data["itransfer_item{$it}_price"] = $price;
